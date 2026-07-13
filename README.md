@@ -1,50 +1,50 @@
-# Chefe - Assistente Pessoal Inteligente
+# Chefe - Smart Personal Assistant
 
-**Chefe** (anteriormente "Agenda") é um assistente pessoal inteligente desenvolvido para Android, criado com o propósito de simplificar e agilizar o registo de tarefas e lembretes através de comandos de voz naturais. 
+**Chefe** (formerly "Agenda") is a smart personal assistant for Android, designed to simplify and streamline the recording of tasks and reminders using natural voice commands.
 
-Esqueça a navegação por dezenas de menus e a digitação de datas; com o Chefe, basta falar o que precisa de fazer, quando e para quê, e o sistema trata de tudo automaticamente.
+Forget navigating through dozens of menus and typing dates; with Chefe, you just speak what you need to do, when, and for what context, and the system handles everything automatically.
 
-## 🚀 Funcionalidades Principais
+## 🚀 Key Features
 
-- **Reconhecimento de Voz Natural:** Prima o botão de microfone e fale. O motor de reconhecimento converte a sua fala em texto em tempo real, guardando também o áudio original.
-- **Extração Inteligente (NLP Local):** A app lê a sua frase e extrai automaticamente:
-  - **A Data e Hora:** Suporta expressões naturais portuguesas como "amanhã", "às 14h30", "por volta das 11:30", "hoje".
-  - **A Categoria:** Analisa a frase à procura de Categorias através de Fuzzy Matching (Distância de Levenshtein). Se mencionar o nome de uma categoria, a app categoriza a tarefa automaticamente.
-  - **A Descrição:** A restante frase é filtrada (removendo expressões de tempo e categorias) para criar uma descrição de tarefa limpa e direta.
-- **Confirmação Manual e Edição:** Após a análise, um ecrã de Confirmação é apresentado, permitindo a edição manual da hora, data, categoria e texto antes de guardar.
-- **Alarmes Invasivos (Full-Screen Intent):** No momento em que um lembrete expira, a app acorda o telemóvel, tocando o Ringtone padrão por cima do ecrã de bloqueio, exigindo que marque a tarefa como vista ou a adie (Snooze de 10 min).
-- **Gestão de Categorias Personalizada:** Crie, edite cores (através de códigos Hexadecimais) e elimine categorias diretamente nas definições. 
-- **Conclusão em Lote e Alertas de Atraso:** As tarefas que ultrapassaram a data limite ficam assinaladas a vermelho e os cartões ganham um fundo de alerta. Selecione múltiplas tarefas e marque todas como "Visto" de uma só vez.
+- **Natural Voice Recognition:** Press the microphone button and speak. The recognition engine converts your speech to text in real-time while also saving the original audio.
+- **Smart Extraction (Local NLP):** The app reads your sentence and automatically extracts:
+  - **Date and Time:** Supports natural expressions like "tomorrow", "at 2:30 PM", "around 11:30", "today".
+  - **Category:** Analyzes the sentence looking for Categories using Fuzzy Matching (Levenshtein Distance). If you mention a category name, the app categorizes the task automatically.
+  - **Description:** The remaining sentence is filtered (removing time expressions and categories) to create a clean and direct task description.
+- **Manual Confirmation & Editing:** After analysis, a Confirmation screen is presented, allowing manual editing of the time, date, category, and text before saving.
+- **Invasive Alarms (Full-Screen Intent):** When a reminder expires, the app wakes up the phone, playing the default Ringtone over the lock screen, requiring you to mark the task as seen or snooze it (10 min).
+- **Custom Category Management:** Create, edit colors (via Hex codes), and delete categories directly in the settings.
+- **Batch Completion & Overdue Alerts:** Tasks that have passed their deadline are marked in red, and the cards get an alert background. Select multiple tasks and mark them all as "Seen" at once.
 
-## 🛠 Tecnologias e Arquitetura
+## 🛠 Technology & Architecture
 
-Este projeto foi construído respeitando as mais recentes diretrizes e boas práticas do ecossistema Android Moderno:
+This project was built following the latest guidelines and best practices of the Modern Android ecosystem:
 
-- **Linguagem:** Kotlin 100%
-- **Arquitetura:** MVVM (Model-View-ViewModel) + Clean Architecture (Camadas: Presentation, Domain e Data)
-- **Injeção de Dependências:** Dagger Hilt
-- **Base de Dados:** Room Database (SQLite local)
-- **Navegação:** Android Jetpack Navigation Component
-- **Agendamento de Lembretes:** `AlarmManager` para garantir a execução exata dos alarmes e `BroadcastReceiver` + `Service` para mostrar as Notificações de Ecrã Inteiro (Full-Screen Intents).
-- **Interface UI:** XML com componentes Material Design 3 e suporte completo a Edge-to-Edge (`fitsSystemWindows`).
-- **Reconhecimento de Voz:** `SpeechRecognizer` nativo do Android.
-- **Permissões em Tempo de Execução:** Suporte avançado às permissões de Notificações, Microfone e Alarmes Exatos (API 33 e API 34+).
+- **Language:** 100% Kotlin
+- **Architecture:** MVVM (Model-View-ViewModel) + Clean Architecture (Presentation, Domain, and Data layers)
+- **Dependency Injection:** Dagger Hilt
+- **Database:** Room Database (Local SQLite)
+- **Navigation:** Android Jetpack Navigation Component
+- **Reminder Scheduling:** `AlarmManager` to ensure exact alarm execution and `BroadcastReceiver` + `Service` to display Full-Screen Intents.
+- **UI Interface:** XML with Material Design 3 components and full Edge-to-Edge support (`fitsSystemWindows`).
+- **Voice Recognition:** Android's native `SpeechRecognizer`.
+- **Runtime Permissions:** Advanced support for Notifications, Microphone, and Exact Alarm permissions (API 33 and API 34+).
 
-## 📱 Como Usar
+## 📱 How to Use
 
-1. **Adicionar Tarefas:** No ecrã principal (Home), toque no botão flutuante de Microfone. Fale algo como: *"Lembrar de enviar email sobre avaliação de desempenho para a categoria ULS por volta das 11:30 amanhã"*.
-2. **Rever e Guardar:** O ecrã de Confirmação irá aparecer. O sistema já selecionou a data (amanhã), a hora (11:30), a categoria (ULS) e limpou a frase. Verifique, ajuste se necessário (tocando nos relógios), e Guarde.
-3. **Gestão de Categorias:** Toque na "roda dentada" (Definições) no canto superior direito para criar ou editar as cores e nomes das suas categorias.
-4. **Alarme:** Quando chegar a hora, o ecrã liga-se. Tem as opções "Concluir" ou "Adiar (10 min)".
-5. **Concluir Tarefas da Home:** Marque a *checkbox* à direita das tarefas pendentes. Pode selecionar várias. O botão inferior "Visto" aparece. Carregue nele para limpar a sua lista!
+1. **Add Tasks:** On the main screen (Home), tap the floating Microphone button. Speak something like: *"Remind me to send an email about performance evaluation for the ULS category around 11:30 tomorrow"*.
+2. **Review and Save:** The Confirmation screen will appear. The system has already selected the date (tomorrow), the time (11:30), the category (ULS), and cleaned the sentence. Check it, adjust if necessary (by tapping the clocks), and Save.
+3. **Category Management:** Tap the "gear" icon (Settings) in the top right corner to create or edit the colors and names of your categories.
+4. **Alarm:** When the time comes, the screen turns on. You have the options to "Complete" or "Snooze (10 min)".
+5. **Complete Home Tasks:** Check the *checkbox* on the right side of pending tasks. You can select several. The bottom "Seen" button will appear. Tap it to clear your list!
 
-## ⚙️ Instalação (Para Desenvolvedores)
+## ⚙️ Installation (For Developers)
 
-1. Clone este repositório.
-2. Abra o projeto no **Android Studio**.
-3. Sincronize o Gradle.
-4. Conecte um emulador ou um dispositivo físico.
-5. Execute a aplicação (Shift + F10) ou corra o comando no terminal: `./gradlew installDebug`.
+1. Clone this repository.
+2. Open the project in **Android Studio**.
+3. Sync Gradle.
+4. Connect an emulator or a physical device.
+5. Run the application (Shift + F10) or run the terminal command: `./gradlew installDebug`.
 
-## Licença
-Este projeto é de caráter pessoal e fechado a um âmbito de assistente privado ("Chefe").
+## License
+This project is intended as a private personal assistant ("Chefe").
