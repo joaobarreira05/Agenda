@@ -13,18 +13,13 @@ class TextParserImpl @Inject constructor(
 
     override fun parse(text: String, categories: List<Category>): ParsedVoiceInput {
         // 1. Extract Date and Time
-        val (dateTime, textAfterDateTime) = dateTimeExtractor.extract(text)
+        val (dateTime, _) = dateTimeExtractor.extract(text)
 
         // 2. Extract Category
-        val (category, textAfterCategory) = categoryMatcher.matchCategory(textAfterDateTime, categories)
+        val (category, _) = categoryMatcher.matchCategory(text, categories)
 
-        // 3. Clean up the remaining text for the description
-        var description = textAfterCategory
-            .replace("lembra-me de", "", ignoreCase = true)
-            .replace("lembrar de", "", ignoreCase = true)
-            .replace("para", "", ignoreCase = true) // Common stopword left over
-            .trim()
-            .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+        // 3. Use the exact original text as the description
+        var description = text.trim().replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 
         if (description.isBlank()) {
             description = "Lembrete sem descrição"

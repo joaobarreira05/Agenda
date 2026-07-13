@@ -6,45 +6,42 @@ import javax.inject.Inject
 class CategoryMatcher @Inject constructor() {
 
     fun matchCategory(text: String, categories: List<Category>): Pair<Category?, String> {
-        var resultText = text
         var matchedCategory: Category? = null
 
         // 1. Exact match (case insensitive)
         for (category in categories) {
-            if (resultText.contains(category.name.lowercase(), ignoreCase = true)) {
-                matchedCategory = category
-                resultText = resultText.replace(category.name, "", ignoreCase = true)
-                break
+            if (text.contains(category.name.lowercase(), ignoreCase = true)) {
+                return Pair(category, text)
             }
         }
 
-        // 2. Fuzzy match if exact match failed and the user said "categoria X"
-        if (matchedCategory == null) {
-            val regex = "categoria\\s+(\\w+)".toRegex(RegexOption.IGNORE_CASE)
-            val match = regex.find(resultText)
-            if (match != null) {
-                val word = match.groupValues[1]
+        // 2. Fuzzy match across all words
+        val words = text.split("\\s+".toRegex())
+        var bestDistance = Int.MAX_VALUE
+        
+        for (word in words) {
+            val cleanWord = word.replace(Regex("[^\\p{L}\\p{Nd}]"), "") // Only letters and numbers
+            if (cleanWord.length < 2) continue
+
+            for (category in categories) {
+                val catName = category.name.trim().lowercase()
+                val distance = levenshtein(cleanWord.lowercase(), catName)
                 
-                // Find the closest category using Levenshtein distance
-                var bestDistance = Int.MAX_VALUE
-                for (category in categories) {
-                    val distance = levenshtein(word.lowercase(), category.name.lowercase())
-                    if (distance < bestDistance) {
-                        bestDistance = distance
-                        matchedCategory = category
-                    }
+                // Be more lenient: distance 1 for length 2-3, distance 2 for 4-6, distance 3 for > 6
+                val maxAllowedDistance = when {
+                    catName.length <= 3 -> 1
+                    catName.length <= 6 -> 2
+                    else -> 3
                 }
                 
-                // If it's reasonably close (e.g., max 3 errors depending on word length)
-                if (bestDistance <= 3) {
-                    resultText = resultText.replace(match.value, "", ignoreCase = true)
-                } else {
-                    matchedCategory = null
+                if (distance <= maxAllowedDistance && distance < bestDistance) {
+                    bestDistance = distance
+                    matchedCategory = category
                 }
             }
         }
 
-        return Pair(matchedCategory, resultText.trim().replace("\\s+".toRegex(), " "))
+        return Pair(matchedCategory, text)
     }
 
     private fun levenshtein(lhs: CharSequence, rhs: CharSequence): Int {
