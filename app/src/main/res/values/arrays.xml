@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default suggested categories for onboarding -->
+    <string-array name="default_categories">
+        <item>Trabalho</item>
+        <item>Universidade</item>
+        <item>Pessoal</item>
+        <item>Compras</item>
+    </string-array>
+
+    <!-- Default category colors (must match order of default_categories) -->
+    <string-array name="default_category_colors">
+        <item>#FF1E88E5</item>
+        <item>#FF7B1FA2</item>
+        <item>#FF43A047</item>
+        <item>#FFEF6C00</item>
+    </string-array>
+
+    <!-- Color picker palette -->
+    <string-array name="category_color_palette">
+        <item>#FFE53935</item>
+        <item>#FFD81B60</item>
+        <item>#FF8E24AA</item>
+        <item>#FF7B1FA2</item>
+        <item>#FF5E35B1</item>
+        <item>#FF3949AB</item>
+        <item>#FF1E88E5</item>
+        <item>#FF039BE5</item>
+        <item>#FF00ACC1</item>
+        <item>#FF00897B</item>
+        <item>#FF43A047</item>
+        <item>#FF7CB342</item>
+        <item>#FFEF6C00</item>
+        <item>#FFF4511E</item>
+        <item>#FF6D4C41</item>
+        <item>#FF546E7A</item>
+    </string-array>
+
+    <!-- Theme options -->
+    <string-array name="theme_options">
+        <item>Claro</item>
+        <item>Escuro</item>
+        <item>Sistema</item>
+    </string-array>
+</resources>

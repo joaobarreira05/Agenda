@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base Theme - Dark -->
+    <style name="Theme.Agenda" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Primary -->
+        <item name="colorPrimary">#FFB0C6FF</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <item name="colorOnPrimary">#FF002B75</item>
+        <item name="colorPrimaryContainer">#FF0039CB</item>
+        <item name="colorOnPrimaryContainer">#FFDDE1FF</item>
+
+        <!-- Secondary -->
+        <item name="colorSecondary">#FFC0C5FF</item>
+        <item name="colorSecondaryVariant">@color/secondary</item>
+        <item name="colorOnSecondary">#FF252D4D</item>
+        <item name="colorSecondaryContainer">#FF3C4465</item>
+        <item name="colorOnSecondaryContainer">#FFDFE0FF</item>
+
+        <!-- Tertiary -->
+        <item name="colorTertiary">#FFCFBCFF</item>
+        <item name="colorOnTertiary">#FF380093</item>
+        <item name="colorTertiaryContainer">#FF5100CC</item>
+        <item name="colorOnTertiaryContainer">#FFE8DDFF</item>
+
+        <!-- Error -->
+        <item name="colorError">#FFF2B8B5</item>
+        <item name="colorOnError">#FF601410</item>
+        <item name="colorErrorContainer">#FF8C1D18</item>
+        <item name="colorOnErrorContainer">#FFF9DEDC</item>
+
+        <!-- Background & Surface -->
+        <item name="android:colorBackground">#FF1B1B1F</item>
+        <item name="colorOnBackground">#FFE4E1E6</item>
+        <item name="colorSurface">#FF1B1B1F</item>
+        <item name="colorOnSurface">#FFE4E1E6</item>
+        <item name="colorSurfaceVariant">#FF46464F</item>
+        <item name="colorOnSurfaceVariant">#FFC7C5D0</item>
+
+        <!-- Outline -->
+        <item name="colorOutline">#FF918F9A</item>
+        <item name="colorOutlineVariant">#FF46464F</item>
+
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Splash Screen Theme - Dark -->
+    <style name="Theme.Agenda.Splash" parent="Theme.Agenda">
+        <item name="android:windowBackground">#FF002B75</item>
+    </style>
+
+</resources>

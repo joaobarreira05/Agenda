@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Voice Recording -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Notifications (runtime permission on API 33+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Exact Alarms (auto-granted for reminder/calendar apps) -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
+    <!-- Re-schedule alarms after device reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Vibrate for notifications -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- Full screen intent for phone-call like alarms -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+
+    <application
+        android:name=".AgendaApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Agenda"
+        tools:targetApi="35">
+
+        <!-- Single Activity -->
+        <activity
+            android:name=".presentation.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Deep link for notifications -->
+            <nav-graph android:value="@navigation/nav_graph" />
+        </activity>
+
+        <!-- Alarm Activity (Full Screen Intent) -->
+        <activity
+            android:name=".presentation.alarm.AlarmActivity"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:exported="false"
+            android:theme="@style/Theme.Agenda" />
+
+        <!-- Alarm Receiver -->
+        <receiver
+            android:name=".receiver.AlarmReceiver"
+            android:exported="false" />
+
+        <!-- Boot Receiver (re-schedule alarms) -->
+        <receiver
+            android:name=".receiver.BootReceiver"
+            android:exported="true"
+            tools:ignore="ExportedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Notification Action Receivers -->
+        <receiver
+            android:name=".receiver.CompleteActionReceiver"
+            android:exported="false" />
+        <receiver
+            android:name=".receiver.SnoozeActionReceiver"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

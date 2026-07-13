@@ -1,0 +1,23 @@
+package com.agenda.app.domain.usecase.category
+
+import com.agenda.app.domain.model.AppError
+import com.agenda.app.domain.model.AppResult
+import com.agenda.app.domain.model.Category
+import com.agenda.app.domain.repository.CategoryRepository
+import javax.inject.Inject
+
+class CreateCategoryUseCase @Inject constructor(
+    private val categoryRepository: CategoryRepository
+) {
+    suspend operator fun invoke(category: Category): AppResult<Unit> {
+        if (category.name.isBlank()) {
+            return AppResult.Error(AppError.Unknown(IllegalArgumentException("O nome da categoria não pode estar vazio.")))
+        }
+        return try {
+            categoryRepository.insert(category)
+            AppResult.Success(Unit)
+        } catch (e: Exception) {
+            AppResult.Error(AppError.Unknown(e))
+        }
+    }
+}

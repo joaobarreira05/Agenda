@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Brand Colors -->
+    <color name="primary">#FF3D5AFE</color>
+    <color name="primary_variant">#FF0039CB</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    <color name="primary_container">#FFDDE1FF</color>
+    <color name="on_primary_container">#FF001258</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary">#FF5C6BC0</color>
+    <color name="secondary_variant">#FF26418F</color>
+    <color name="on_secondary">#FFFFFFFF</color>
+    <color name="secondary_container">#FFDFE0FF</color>
+    <color name="on_secondary_container">#FF141937</color>
+
+    <!-- Tertiary Colors -->
+    <color name="tertiary">#FF7C4DFF</color>
+    <color name="on_tertiary">#FFFFFFFF</color>
+    <color name="tertiary_container">#FFE8DDFF</color>
+    <color name="on_tertiary_container">#FF22005D</color>
+
+    <!-- Error Colors -->
+    <color name="error">#FFB3261E</color>
+    <color name="on_error">#FFFFFFFF</color>
+    <color name="error_container">#FFF9DEDC</color>
+    <color name="on_error_container">#FF410E0B</color>
+
+    <!-- Background & Surface -->
+    <color name="background">#FFFBFBFF</color>
+    <color name="on_background">#FF1B1B1F</color>
+    <color name="surface">#FFFBFBFF</color>
+    <color name="on_surface">#FF1B1B1F</color>
+    <color name="surface_variant">#FFE3E1EC</color>
+    <color name="on_surface_variant">#FF46464F</color>
+
+    <!-- Outline -->
+    <color name="outline">#FF77767F</color>
+    <color name="outline_variant">#FFC7C5D0</color>
+
+    <!-- Category Default Colors -->
+    <color name="category_work">#FF1E88E5</color>
+    <color name="category_university">#FF7B1FA2</color>
+    <color name="category_personal">#FF43A047</color>
+    <color name="category_shopping">#FFEF6C00</color>
+    <color name="category_health">#FFE53935</color>
+    <color name="category_finance">#FF00897B</color>
+
+    <!-- Record Button -->
+    <color name="record_button_start">#FF3D5AFE</color>
+    <color name="record_button_end">#FF7C4DFF</color>
+    <color name="record_button_active_start">#FFE53935</color>
+    <color name="record_button_active_end">#FFFF5252</color>
+
+    <!-- Voice Wave -->
+    <color name="voice_wave">#FF3D5AFE</color>
+    <color name="voice_wave_alpha">#4D3D5AFE</color>
+
+    <!-- Status -->
+    <color name="status_pending">#FFFFA726</color>
+    <color name="status_completed">#FF66BB6A</color>
+</resources>

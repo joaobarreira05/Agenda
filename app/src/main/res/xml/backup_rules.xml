@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Backup rules for Android 11 and below (API < 31).
+    Include database and shared preferences, exclude audio files.
+-->
+<full-backup-content>
+    <include domain="database" path="agenda_database" />
+    <include domain="sharedpref" path="." />
+    <exclude domain="file" path="audio/" />
+    <exclude domain="cache" path="." />
+</full-backup-content>
